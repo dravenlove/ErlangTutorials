@@ -29,10 +29,7 @@ Ets.
 %%这个是将不同模块的ets合并到一起
 %%ets:insert(date(Mod),ets:tab2list(date(Mod))).
 
-%%创建一个dets保存ets的数据
-%% dets:open_file(dets1,[{type,bag}]).
-%%ets转换为dets.
-%% ets:to_dets(date(Mod),dets1).
+%%
 
 
 
