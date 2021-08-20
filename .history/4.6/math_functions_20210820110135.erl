@@ -1,7 +1,7 @@
 %%(6) 向math_functions.erl添加一个名为filter(F, L)的高阶函数，它返回L里所有符合条件的元素X（条件是F(X)为true）。
 
 -module(math_functions).
--export([even/1,odd/1,filter/2,init/1]).
+-export([even/1,odd/1,filter/2]).
 
 
 init([]) -> {ok,ets:new(?MODULE,[])}.
