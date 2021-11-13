@@ -1,0 +1,55 @@
+import "ProtoPublic.proto";
+
+message Proto10107001       // 获取好友相关列表
+{
+    optional int32 type = 1;       // 1 好友,2 黑名单,3 好友申请列表,4 已删除好友
+}
+
+message Proto50107001       // 获取好友列表(返回)
+{
+    optional int32 type = 1;       // 列表类型
+    repeated ProtoFriend friend_list = 2;       // 
+}
+
+message Proto10107002       // 请求好友申请
+{
+    optional int32 friend_id = 1;       // 好友id
+}
+
+message Proto10107003       // 请求好友申请审核
+{
+    optional int32 type = 1;       // 1 接受，2 拒绝
+    repeated int64 apply_list = 2;       // 申请的玩家id列表
+}
+
+message Proto10107004       // 请求删除好友
+{
+    repeated int64 id_list = 1;       // 要删除的好友id列表
+}
+
+message Proto10107005       // 请求加入黑名单
+{
+    repeated int64 id_list = 1;       // 要删除的好友id列表
+}
+
+message Proto10107006       // 请求删除黑名单
+{
+    repeated int64 id_list = 1;       // 玩家id列表
+}
+
+message Proto10107007       // 请求搜索好友
+{
+    optional string name = 1;       // 玩家名
+}
+
+message Proto50107007       // 请求搜索好友(返回)
+{
+    optional ProtoFriend friend = 1;       // 玩家信息
+}
+
+message Proto80107008       // 通知有新的好友申请请求
+{
+    optional int64 player_id = 1;       // 申请的玩家ID
+}
+
+

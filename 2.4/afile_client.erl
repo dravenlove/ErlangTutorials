@@ -1,19 +1,19 @@
-%%(4) è¿è¡Œæ–‡ä»¶å®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨ä»£ç ã€‚åŠ å…¥ä¸€ä¸ªåä¸ºput_fileçš„å‘½ä»¤ã€‚ä½ éœ€è¦æ·»åŠ ä½•ç§æ¶ˆæ¯ï¼Ÿå­¦ä¹ å¦‚ä½•æŸ¥é˜…æ‰‹å†Œé¡µã€‚æŸ¥é˜…æ‰‹å†Œé¡µé‡Œçš„fileæ¨¡å—ã€‚ 
+%%(4) ÔËĞĞÎÄ¼ş¿Í»§¶ËºÍ·şÎñÆ÷´úÂë¡£¼ÓÈëÒ»¸öÃûÎªput_fileµÄÃüÁî¡£ÄãĞèÒªÌí¼ÓºÎÖÖÏûÏ¢£¿Ñ§Ï°ÈçºÎ²éÔÄÊÖ²áÒ³¡£²éÔÄÊÖ²áÒ³ÀïµÄfileÄ£¿é¡£ 
 
 
 -module(afile_client).
--export([ls/1,get_file/2,put_file/3]).
+-export([ls/2,get_file/2,put_file/3]).
 
-ls(Server) ->
-	Server ! {self(),list_dir},
+ls(Server,Dir) ->
+	Server ! {self(),{list_dir,Dir}},
 	receive
 		{Server,FileList} ->
-			FileList
+			io:format("~p",[FileList])
 	end.
 
-put_file(Server,Filedir,Filename) ->
+put_file(Server,Content1,Filedir) ->
 		
-	Server ! {self(),{put_file,Filedir},Filename},
+	Server ! {self(),{put_file,Content1,Filedir}},
 	receive
 		{Server,Content} ->
 			Content

@@ -1,0 +1,28 @@
+import "ProtoPublic.proto";
+
+message Proto10119001       // 请求功能开启列表
+{
+    optional int32 other = 1;       // 
+}
+
+message Proto50119001       // 请求功能开启列表(返回)
+{
+    repeated int32 function_list = 1;       // 开启的功能ID列表
+}
+
+message Proto80119001       // 通知开启的功能列表
+{
+    repeated int32 function_list = 1;       // 开启的功能ID列表
+}
+
+message Proto80119002       // 通知功能关闭
+{
+    repeated int32 function_list = 1;       // 新关闭的功能ID列表
+}
+
+message Proto80119003       // 通知功能开启
+{
+    repeated int32 function_list = 1;       // 新开启的功能列表
+}
+
+

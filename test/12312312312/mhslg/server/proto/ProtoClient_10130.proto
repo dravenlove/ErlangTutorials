@@ -1,0 +1,25 @@
+import "ProtoPublic.proto";
+
+message Proto50130001       // 请求后勤中心界面信息(返回)
+{
+    optional int32 remaining_free_times = 1;       // 剩余免费次数
+    optional int32 all_times = 2;       // 总次数
+    repeated ProtoKeyValue buy_times = 3;       // 购买次数
+}
+
+message Proto10130002       // 购买资源
+{
+    optional int32 type = 1;       // 资源类型
+    optional int32 use_type = 2;       // 使用类型   0:元宝  1:免费次数 2:暴击次数
+}
+
+message Proto50130002       // 购买资源(返回)
+{
+    optional int32 remaining_free_times = 1;       // 剩余免费次数
+    optional int32 all_times = 2;       // 总次数
+    repeated ProtoKeyValue buy_times = 3;       // 购买次数
+    optional int32 is_cruel = 4;       // 是否暴击
+    repeated ProtoItem item = 5;       // 获得道具
+}
+
+

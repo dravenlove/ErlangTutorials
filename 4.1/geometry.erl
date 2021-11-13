@@ -1,8 +1,7 @@
-%%(1) æ‰©å±•geometry.erlã€‚æ·»åŠ ä¸€äº›å­å¥æ¥è®¡ç®—åœ†å’Œç›´è§’ä¸‰è§’å½¢çš„é¢ç§¯ã€‚æ·»åŠ ä¸€äº›å­å¥æ¥è®¡ç®—å„ç§å‡ ä½•å›¾å½¢çš„å‘¨é•¿ã€‚
-
+%%(1) À©Õ¹geometry.erl¡£Ìí¼ÓÒ»Ğ©×Ó¾äÀ´¼ÆËãÔ²ºÍÖ±½ÇÈı½ÇĞÎµÄÃæ»ı¡£Ìí¼ÓÒ»Ğ©×Ó¾äÀ´¼ÆËã¸÷ÖÖ¼¸ºÎÍ¼ĞÎµÄÖÜ³¤¡£
 
 -module(geometry).
--export([area/2,area/3]).
+-export([area/2,area/3,circumference/2,circumference/3]).
 
 area(circle,Radius)->
 	3.1415*Radius*Radius;
@@ -16,5 +15,11 @@ area(triangle,Width,Height)->
 area(rectangle,Width,Height)->
 	Width*Height.
 
-%%è¿™é‡Œæœ‰ä¸ªå¾ˆé‡è¦çš„ç‚¹.
-%%Erlangçš„é‡æ„å‡½æ•°ç”¨;å·ç»“æŸ,ä½†æ˜¯æœ€åä¸€ä¸ªé‡æ„å‡½æ•°ç”¨.ç»“æŸ.
+circumference(circle,Radius)->
+	2*3.1415*Radius.
+
+circumference(triangle,Width,Height)->
+	Width+Height+math:sqrt(math:pow(Width,2)+math:pow(Height,2)).
+
+%%ÕâÀïÓĞ¸öºÜÖØÒªµÄµã.
+%%ErlangµÄÖØ¹¹º¯ÊıÓÃ;ºÅ½áÊø,µ«ÊÇ×îºóÒ»¸öÖØ¹¹º¯ÊıÓÃ.½áÊø.

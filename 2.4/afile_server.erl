@@ -1,23 +1,23 @@
-%%(4) è¿è¡Œæ–‡ä»¶å®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨ä»£ç ã€‚åŠ å…¥ä¸€ä¸ªåä¸ºput_fileçš„å‘½ä»¤ã€‚ä½ éœ€è¦æ·»åŠ ä½•ç§æ¶ˆæ¯ï¼Ÿå­¦ä¹ å¦‚ä½•æŸ¥é˜…æ‰‹å†Œé¡µã€‚æŸ¥é˜…æ‰‹å†Œé¡µé‡Œçš„fileæ¨¡å—ã€‚ 
+%%(4) ÔËÐÐÎÄ¼þ¿Í»§¶ËºÍ·þÎñÆ÷´úÂë¡£¼ÓÈëÒ»¸öÃûÎªput_fileµÄÃüÁî¡£ÄãÐèÒªÌí¼ÓºÎÖÖÏûÏ¢£¿Ñ§Ï°ÈçºÎ²éÔÄÊÖ²áÒ³¡£²éÔÄÊÖ²áÒ³ÀïµÄfileÄ£¿é¡£ 
 
 -module(afile_server).
--export([start/1,loop/1]).
+-export([start/0,loop/0]).
 
-start(Dir) -> spawn(afile_server,loop,[Dir]).
+start()-> register(ccc,spawn(afile_server,loop,[])).
 
-loop(Dir) ->
+loop()->
 	receive
-		{Client,list_dir} ->
+		{Client,{list_dir,Dir}} ->
 			Client ! {self(),file:list_dir(Dir)};
 
-		{Client,{put_file,File},Filename} ->
-			Filename1=[$.,$/]++Filename,
-			file:open(Filename1, [write]),
-			file:copy(File,Filename1),
+		{Client,{put_file,Filecontent,Filendir}} ->
+			{ok,Filename2}=file:open(Filendir, [write]),
+			file:write(Filename2,Filecontent),
+			file:close(Filename2),
 			Client !{self(),save};
 			
-		{Client,{get_file,File}} ->
+		{Client,{get_file,Dir,File}} ->
 			Full = filename:join(Dir,File),
 			Client !{self(),file:read_file(Full)}
 		end,
-		loop(Dir).
+		loop().

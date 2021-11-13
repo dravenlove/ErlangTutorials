@@ -1,0 +1,50 @@
+import "ProtoPublic.proto";
+
+message Proto10146001       // 请求混沌傀儡界面
+{
+    optional int32 city_id = 1;       // 城池id
+}
+
+message Proto50146001       // 请求混沌傀儡界面(返回)
+{
+    optional int32 city_id = 1;       // 城池id
+    optional int32 robot_id = 2;       // 机器人id
+    optional int32 times = 3;       // 总次数
+    optional int32 left_times = 4;       // 剩余次数
+    optional int32 is_lock = 5;       // 是否锁定(0否,1是)
+    optional int64 refresh_time_tick = 6;       // 刷新时间戳
+    optional bool is_max_free_refresh_times = 7;       // 是否达到免费最大刷新次数
+    repeated ProtoItem item_list = 8;       // 挑战奖励
+    repeated ProtoKeyValue predict = 9;       // 战斗预计hero_id损失
+    optional ProtoHeroBase hero_base = 10;       // 怪物信息
+}
+
+message Proto10146002       // 请求刷新混沌傀儡
+{
+    optional int32 city_id = 1;       // 城池id
+    optional int32 is_free = 2;       // 是否免费刷新(0否,1是)
+}
+
+message Proto10146003       // 请求锁定混沌傀儡
+{
+    optional int32 type = 1;       // 0解锁,1锁定
+    optional int32 city_id = 2;       // 城池id
+}
+
+message Proto10146004       // 请求挑战混沌傀儡
+{
+    optional int32 city_id = 1;       // 城池id
+    optional int32 hero_id = 2;       // 派出英雄id
+}
+
+message Proto80146001       // 通知混沌傀儡刷新
+{
+    repeated ProtoKeyValue puppet_list = 1;       // 全部傀儡信息,key:城池id,value:机器人id
+}
+
+message Proto10146005       // 请求购买挑战次数
+{
+    optional int32 city_id = 1;       // 城池id
+}
+
+

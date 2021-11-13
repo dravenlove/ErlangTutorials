@@ -1,0 +1,26 @@
+import "ProtoPublic.proto";
+
+message Proto10134001       // 挑战魔塔（请求）
+{
+    repeated int32 hero_list = 1;       // 英雄id列表
+}
+
+message Proto80134003       // 魔塔信息（通知）
+{
+    optional int32 state = 1;       // 0-空闲 1-战斗中 2-有奖励
+    optional int64 combat_id = 2;       // 战斗队列id
+    optional int32 cur_floor = 3;       // 
+    optional int32 use_times = 4;       // 已用次数
+    optional int32 buy_times = 5;       // 购买次数
+    optional int32 former_type = 6;       // 
+    optional int32 latter_type = 7;       // 
+}
+
+message Proto50134005       // 排行信息（返回）
+{
+    repeated ProtoDungeonedRank rank_list = 1;       // 
+    optional ProtoShowRole self = 2;       // 
+    optional int32 self_kills = 3;       // 
+}
+
+
