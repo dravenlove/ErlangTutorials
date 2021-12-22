@@ -28,3 +28,14 @@ deal(D,N)->
 		2->for1(2*N-1,N,fun(C)->C
 			end)
 end.
+
+%%%% 从列表里获取N个不同元素作为新列表
+%%
+%%list_random(N, List) ->
+%%	List;
+%%
+%%list_random(_Num, List) ->
+%%	X = rand(1, length(List)),
+%%	List1 = List -- [lists:nth(X, List)],
+%%	Num1 = length(List1),
+%%	list_random(Num1, List1).
