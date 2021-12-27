@@ -11,18 +11,18 @@
 
 -compile(export_all).
 
--define(X_START,0).
--define(Y_START,0).
--define(X_END,11).
--define(Y_END,11).
+-define(X_START,0).     %% 定义地图X起点
+-define(Y_START,0).     %% 定义地图X终点
+-define(X_END,11).      %% 定义地图Y起点
+-define(Y_END,11).      %% 定义地图Y终点
 
 -define(GRID_V, 10). 	%% 垂直代价
 -define(GRID_D, 14).	%% 对角代价
 
 -record(a_node, {
-    id = 0
-    ,x = 0
-    ,y = 0
+    id = 0      %% 点的id
+    ,x = 0      %% 点的X坐标
+    ,y = 0      %% 点的Y坐标
     ,cost = 0   %% 代价系数比如陆地系数为1
 }).
 
@@ -34,11 +34,28 @@
 %%    ,path = []
 %%}).
 
+%% 函数进入处输入起点id和终点id 获得路径id列表
 start(Start, End) ->
     Now_node = lists:keyfind(Start, #a_node.id, get_map()),
     Target_node = lists:keyfind(End, #a_node.id, get_map()),
     search(Now_node, 0,Target_node, [], [], []).
 
+%% 构造初始化地图
+get_map() ->
+    X_list = lists:seq(?X_START, ?X_END),
+    Y_list = lists:seq(?Y_START, ?Y_END),
+    lists:foldl(fun(X, Acc1) ->
+        lists:foldl(fun(Y, Acc2) ->
+            case X =:= ?X_START orelse Y =:= ?Y_START orelse X =:= ?X_END orelse Y =:= ?Y_END of
+                true ->
+                    [#a_node{id = X * 100 + Y,x = X, y = Y ,cost = 0}] ++ Acc2;
+                false ->
+                    [#a_node{id = X * 100 + Y,x = X, y = Y ,cost = 1}] ++ Acc2
+            end
+                    end, [], Y_list) ++ Acc1
+                end, [], X_list).
+
+%% 递归实现寻路
 search(Target_node, _, Target_node, _Open_list, _Close_list, Path) ->
     Path ++ [Target_node];
 
@@ -101,6 +118,7 @@ search(Now_node, Last_node,Target_node, Open_list, Close_list, Path) ->
     Path1 = Path ++ [Now_node],
     search(New_Node1, Last_node1, Target_node1, Open_list1, Close_list11, Path1).
 
+%% 获取开放列表
 get_open_lists(Node,Open_List,Close_List) ->
 %%    io:format("2 ~n"),
 %%    io:format("Node:~p ~n",[Node]),
@@ -113,6 +131,7 @@ get_open_lists(Node,Open_List,Close_List) ->
         end, Nearby_Node),
     New_List ++ Open_List.
 
+%% 获取某个点的附近点(这里的附近指的是距离为1的点(包括垂直和斜点))
 get_other_node(Now_node, Open_list) ->
 %%    io:format("~p",[Now_node]),
     #a_node{x = X, y = Y} = Now_node,
@@ -127,6 +146,7 @@ get_other_node(Now_node, Open_list) ->
                                    end, [], Node_List),
     Other_node_list.
 
+%% 获取某个点的附近点(这里的附近指的是垂直距离为1的点)
 get_nearby_node(Node, Close_list) ->
 %%    io:format("Node:~p ~n",[Node]),
     #a_node{x = X, y = Y} = Node,
@@ -157,16 +177,19 @@ get_nearby_node(Node, Close_list) ->
               end, [], IdList),
     Nearby_node_list.
 
+%% 计算经过两点之间路径所需代价
 get_G(Node1, Node2) ->
     #a_node{x= X, y = Y} = Node1,
     #a_node{x= X1, y = Y1, cost = Cost} = Node2,
     (abs(X - X1) + abs(Y - Y1)) * Cost.
 
+% 计算该点到终点的预估代价
 get_H(Node1, End_Node) ->
     #a_node{x= X, y = Y} = Node1,
     #a_node{x= X1, y = Y1} = End_Node,
     (abs(X - X1) + abs(Y - Y1)) * ?GRID_V.
 
+%% 计算路径的总代价
 calculate_F(Path) ->
     List = lists:seq(1, length(Path) - 1),
     G = lists:foldl(fun(X, Acc) ->
@@ -183,19 +206,7 @@ calculate_F(Path) ->
     H = (abs(Start_X - End_X) + abs(Start_Y -End_Y)) * ?GRID_V,
     H + G.
 
-get_map() ->
-    X_list = lists:seq(?X_START, ?X_END),
-    Y_list = lists:seq(?Y_START, ?Y_END),
-    lists:foldl(fun(X, Acc1) ->
-        lists:foldl(fun(Y, Acc2) ->
-            case X =:= ?X_START orelse Y =:= ?Y_START orelse X =:= ?X_END orelse Y =:= ?Y_END of
-                true ->
-                    [#a_node{id = X * 100 + Y,x = X, y = Y ,cost = 0}] ++ Acc2;
-                false ->
-                    [#a_node{id = X * 100 + Y,x = X, y = Y ,cost = 1}] ++ Acc2
-            end
-            end, [], Y_list) ++ Acc1
-        end, [], X_list).
+
 
 %%show() ->
 %%    MapList = get_map(),
