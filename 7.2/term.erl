@@ -1,32 +1,19 @@
-%% (2).±àĞ´Ò»¸ö term_to_packet(Term) -> Packet µÄº¯Êı£¬Í¨¹ıµ÷ÓÃ term_to_binary(Term) À´Éú³É²¢·µ»ØÒ»¸ö¶ş½øÖÆĞÍ£¬ËüÄÚº¬³¤¶ÈÎª 4 ¸ö×Ö½ÚµÄ°üÍ· N£¬ºó¸ú N ¸ö×Ö½ÚµÄÊı¾İ
+%% (2).ç¼–å†™ä¸€ä¸ª term_to_packet(Term) -> Packet çš„å‡½æ•°ï¼Œé€šè¿‡è°ƒç”¨ term_to_binary(Term) æ¥ç”Ÿæˆå¹¶è¿”å›ä¸€ä¸ªäºŒè¿›åˆ¶å‹ï¼Œå®ƒå†…å«é•¿åº¦ä¸º 4 ä¸ªå­—èŠ‚çš„åŒ…å¤´ Nï¼Œåè·Ÿ N ä¸ªå­—èŠ‚çš„æ•°æ®
 
 -module(termtopacket).
 -export([term_to_packet/1]).
 
+%% erlang å…ƒç´ è½¬æ¢æˆåŒ…ä½“
 term_to_packet(Term) ->
+    %% å…ˆè®©æ•´ä¸ªå…ƒç´ å˜æˆäºŒè¿›åˆ¶ç±»å‹
     Bin = term_to_binary(Term),
-    % ÌáÈ¡³öÇ° 4 Byte£¬×÷ÎªºóÃæinfoµÄ´óĞ¡
-    % ×¢Òâ£¬Ò»¶¨ÒªÎ»ÊıÆ¥Åä£¬·ñÔò»á±¨´í¡£
+    % æå–å‡ºå‰ 4 Byteï¼Œä½œä¸ºåé¢infoçš„å¤§å°
+    % æ³¨æ„ï¼Œä¸€å®šè¦ä½æ•°åŒ¹é…ï¼Œå¦åˆ™ä¼šæŠ¥é”™ã€‚
+
+    %% Headå°±æ˜¯åŒ…å¤´çš„äºŒè¿›åˆ¶å†…å®¹
     <<Head:32/bits, _/bits>> = Bin,
+    %% æå–åŒ…å¤´
     <<Size:32>> = Head,
+    %% è¿™é‡Œçš„Infoå°±æ˜¯åŒ…å¤´åçš„æ•°æ®ä½“äºŒè¿›åˆ¶å†…å®¹
     <<Head:32/bits, Info:Size/bits>> = Bin,
     Info.
-
-% Ò²¿ÉÒÔÕâÑùĞ´
-%%term_to_packet(Term) ->
-%%    Bin = term_to_binary(Term),
-%%    <<Head:32, Info/bitstring>> = Bin,
-%%    Info.
-
-% ±àĞ´Ò»¸ö term_to_packet(Term) -> Packet µÄº¯Êı£¬
-% Í¨¹ıµ÷ÓÃ term_to_binary(Term) À´Éú³É²¢·µ»ØÒ»¸ö¶ş½øÖÆĞÍ£¬
-% ËüÄÚº¬³¤¶ÈÎª 4 ¸ö×Ö½ÚµÄ°üÍ· N£¬ºó¸ú N ¸ö×Ö½ÚµÄÊı¾İ
-
-%%-module(termtopacket).
-%%-export([term_to_packet/1]).
-
-%%term_to_packet(Term) ->
-%%    Bin = term_to_binary(Term),
-%%    Length = bit_size(Bin),
-%%    Size = <<Length:1/unit:32>>,
-%%    <<Size/binary, Bin/binary>>.
