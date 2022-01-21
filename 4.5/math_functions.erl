@@ -4,11 +4,13 @@
 -export([even/1,odd/1]).
 
 even(X)->
-	case X rem 2=:=0 of
-	true->true;
-	false->false end.
+	case X rem 2 =:= 0 of
+		true->true;
+		false->false 
+	end.
 		
 odd(X)->
-	case X rem 2=:=1 of
+	case X rem 2 =:= 1 of
 	false->io:format("no comeback.");
-	true -> true end.	
+	true -> true 
+	end.	

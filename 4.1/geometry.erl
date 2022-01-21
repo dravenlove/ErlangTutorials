@@ -1,4 +1,4 @@
-%%(1) À©Õ¹geometry.erl¡£Ìí¼ÓÒ»Ð©×Ó¾äÀ´¼ÆËãÔ²ºÍÖ±½ÇÈý½ÇÐÎµÄÃæ»ý¡£Ìí¼ÓÒ»Ð©×Ó¾äÀ´¼ÆËã¸÷ÖÖ¼¸ºÎÍ¼ÐÎµÄÖÜ³¤¡£
+%%(1) æ‰©å¼ geometry.erlæ·»åŠ å­—å¥è®¡ç®—åœ†å’Œç›´è§’ä¸‰è§’å½¢çš„é¢ç§¯,ç”¨å­—å¥è®¡ç®—å„ç§å‡ ä½•å›¾å½¢çš„å‘¨é•¿
 
 -module(geometry).
 -export([area/2,area/3,circumference/2,circumference/3]).
@@ -21,5 +21,6 @@ circumference(circle,Radius)->
 circumference(triangle,Width,Height)->
 	Width+Height+math:sqrt(math:pow(Width,2)+math:pow(Height,2)).
 
-%%ÕâÀïÓÐ¸öºÜÖØÒªµÄµã.
-%%ErlangµÄÖØ¹¹º¯ÊýÓÃ;ºÅ½áÊø,µ«ÊÇ×îºóÒ»¸öÖØ¹¹º¯ÊýÓÃ.½áÊø.
+
+%%è¿™é‡Œæœ‰ä¸ªå¾ˆé‡è¦çš„ç‚¹.
+%%Erlangçš„é‡æž„å‡½æ•°ç”¨;å·ç»“æŸ,ä½†æ˜¯æœ€åŽä¸€ä¸ªé‡æž„å‡½æ•°ç”¨.ç»“æŸ.

@@ -4,13 +4,10 @@
 -export([even/1,odd/1,split/1,split1/1]).
 
 even(X)->
-	case X rem 2=:=0 of
-	true->true;
-	false->false end.
+	X rem 2=:=0.
 		
 odd(X)->
-	case X rem 2=:=1 of
-	true -> true end.	
+	X rem 2 =:= 1.	
 
 %%归集器方法.
 %%这个归集器的关键点是列表推导.
@@ -27,8 +24,8 @@ split(L)->
 %%filter方法.
 
 split1(L)->
-	Even=lists:filter(fun(X)->X rem 2 =:=0end,L),
-	Odd=lists:filter(fun(X)->X rem 2 =:=1end,L),
+	Even=lists:filter(fun(X) -> even(X) end, L),
+	Odd=lists:filter(fun(X) -> odd(X) end, L),
 	{Even,Odd}.
 
 

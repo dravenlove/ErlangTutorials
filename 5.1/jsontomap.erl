@@ -12,3 +12,33 @@ start(X)->
 	List--[ok].
 	%%maps:from_list(List--[ok]).
 
+%% 自己写从json到erlang映射组.
+-ifdef(JSON).
+-type json() :: jsonobj() | jsonarry() | jsonnum() | jsonstr() | true | false | null.
+-type jsonobj :: {obj, [{jsonkey(), json()}]}.
+-type jsonkey :: string().
+-type jsonarry() :: [json()].
+-type jsonnum() :: integer() | float().
+-type jsonstr() :: binary().
+
+-export_type([json/0, jsonobj/0. jsonkey/0, jsonarray/0, jsonnum/0, jsonstr/0]).
+-endif.
+
+% 暂时没找到好的实现方法,后面再回顾.
+
+% json_to_map(Json) ->
+% 	case file:read_file(JSON) of
+% 		{ok, Binary} ->
+% 			NewMap = maps:new(),
+% 			maps:put(, , NewMap),
+% 			;
+% 		skip
+% 	end.
+
+% check_json(Json) ->
+% 	case file:read_file(JSON) of
+% 		{ok, Binary} ->
+% 			List = erlang:bitstring_to_list(Binary),
+% 			ture;
+% 		false
+% 	end.
