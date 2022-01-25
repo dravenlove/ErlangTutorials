@@ -13,6 +13,8 @@
 
 
 start(N, M, Message) ->
+    statistics(runtime),
+    statistics(wall_clock),
     createprocess(N),
     launch(N, M, Message).
 
@@ -31,7 +33,10 @@ createprocess(N) ->
 loop() ->
     receive
         {_End, _End, End_time, End_time, Message} ->
-            io:format("This is last process,it have running ~p times,it's message is ~p ~nAll success ~n", [End_time, Message]);
+            io:format("This is last process,it have running ~p times,it's message is ~p ~nAll success ~n", [End_time, Message]),
+            {_, Time1} = statistics(runtime),
+            {_, Time2} = statistics(wall_clock),
+            io:format("runtime is ~p, wall_clock is ~p ~n", [Time1,Time2]);
         {Now, End, End_time, End_time, Message} ->
             io:format("This is last time,This is ~p process,it have running ~p times,it's message is ~p ~n", [Now, End_time, Message]),
             {NextPid, NextName} = get_next_pid(Now),
