@@ -1,0 +1,43 @@
+import "ProtoPublic.proto";
+
+message Proto50151001       // 获取占星界面(返回)
+{
+    optional int32 buy_time = 1;       // 剩余购买次数
+}
+
+message Proto10151002       // 占星
+{
+    optional int32 time = 1;       // 单抽 1 十连 10
+}
+
+message Proto50151002       // 占星(返回)
+{
+    optional int32 buy_time = 1;       // 剩余购买次数
+}
+
+message Proto10151003       // 碎星
+{
+    repeated int32 item_list = 1;       // 分解道具列表
+}
+
+message Proto50151004       // 星座宝物等级上限(返回)
+{
+    repeated ProtoKeyValue level_info = 1;       // 等级上限信息
+}
+
+message Proto10151005       // 更换英雄星座宝物
+{
+    optional int32 hero_id = 1;       // 英雄id
+    optional int32 type = 2;       // 类型（1,2,3,4）
+    optional int32 inlay_type = 3;       // 孔位类型 五个孔位（1,2,3,4,5）
+    optional int32 item_id = 4;       // 宝物id
+}
+
+message Proto10151006       // 升级星座宝物
+{
+    optional int32 hero_id = 1;       // 英雄id
+    optional int32 item_id = 2;       // 宝物id
+    optional uint32 ues_item = 3;       // 道具id
+}
+
+

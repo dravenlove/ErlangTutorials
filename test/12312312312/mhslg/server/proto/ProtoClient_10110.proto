@@ -1,0 +1,15 @@
+import "ProtoPublic.proto";
+
+message Proto80110002       // 通知充值成功
+{
+    optional int32 recharge_id = 1;       // 档位id
+}
+
+message Proto80110003       // 通知充值信息
+{
+    repeated ProtoRecharge recharge_info = 1;       // 充值信息
+    optional int32 have_first = 2;       // 是否有首充 0 没有 1 有
+    optional int32 get_first = 3;       // 是否领取首充 0 未领取 1 已领取
+}
+
+

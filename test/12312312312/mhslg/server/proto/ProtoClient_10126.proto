@@ -1,0 +1,189 @@
+import "ProtoPublic.proto";
+
+message Proto10126001       // 请求玩家全部装备信息
+{
+    optional int32 type = 1;       // 类型：0.全部，1.神兵......
+}
+
+message Proto50126001       // 请求玩家全部装备信息(返回)
+{
+    repeated ProtoHeroEquip equip = 1;       // 装备信息
+}
+
+message Proto10126002       // 请求英雄全部装备信息
+{
+    optional int32 hero_id = 1;       // 英雄id
+}
+
+message Proto50126002       // 请求英雄全部装备信息(返回)
+{
+    repeated int64 unique_id_list = 1;       // 道具id列表
+    optional int32 suit = 2;       // 套装0.未组成，101.武帝套......
+}
+
+message Proto80126002       // 通知英雄装备信息
+{
+    repeated ProtoHeroEquip hero_equip = 1;       // 英雄装备信息
+    optional int32 suit = 2;       // 套装
+}
+
+message Proto10126003       // 请求英雄穿戴装备
+{
+    optional int32 hero_id = 1;       // 英雄id
+    optional int64 unique_id = 2;       // 道具id
+}
+
+message Proto10126004       // 请求英雄卸下装备
+{
+    optional int32 hero_id = 1;       // 英雄id
+    optional int64 unique_id = 2;       // 道具id
+}
+
+message Proto10126005       // 请求装备强化
+{
+    optional int64 unique_id = 1;       // 道具id
+}
+
+message Proto50126005       // 请求装备强化(返回)
+{
+    optional int32 flag = 1;       // 0失败，1成功
+}
+
+message Proto10126006       // 请求装备突破
+{
+    optional int64 unique_id = 1;       // 道具id
+    optional int32 type = 2;       // 0,等待突破1，消耗元宝立即突破
+}
+
+message Proto50126006       // 请求装备突破(返回)
+{
+    optional int32 flag = 1;       // 0失败，1成功
+}
+
+message Proto10126007       // 请求装备洗练信息
+{
+    optional int64 unique_id = 1;       // 道具id
+}
+
+message Proto50126007       // 请求装备洗练信息(返回)
+{
+    repeated int32 attribute_id = 1;       // 自带属性id列表
+    repeated int32 lock = 2;       // 锁的位置
+    repeated int32 wash_attribute_id = 3;       // 洗出的属性id列表
+    repeated int32 gold_finger = 4;       // 金手指
+}
+
+message Proto10126008       // 请求装备突破加速
+{
+    optional int32 type = 1;       // 类型1元宝，2道具
+    optional int64 unique_id = 2;       // 使用道具id
+    optional int32 num = 3;       // 使用数量
+}
+
+message Proto50126008       // 请求装备突破加速(返回)
+{
+    optional int32 time = 1;       // 剩余时间
+}
+
+message Proto10126009       // 请求突破领取
+{
+    optional int32 other = 1;       // 
+}
+
+message Proto50126009       // 请求突破领取(返回)
+{
+    optional int32 type = 1;       // 装备类型1.神兵2.坐骑......
+    optional int32 flag = 2;       // 状态0.失败，1.成功
+    optional int64 unique_id = 3;       // 唯一id
+    repeated ProtoItemObj item_list = 4;       // 失败返还道具
+}
+
+message Proto10126010       // 请求洗练上锁
+{
+    optional int64 unique_id = 1;       // 唯一id
+    optional int32 index = 2;       // 锁的位置
+    optional int32 flag = 3;       // 0解锁，1上锁
+}
+
+message Proto50126010       // 请求洗练上锁(返回)
+{
+    repeated int32 lock = 1;       // 锁列表
+}
+
+message Proto10126011       // 请求装备洗练
+{
+    optional int64 unique_id = 1;       // 唯一id
+}
+
+message Proto50126011       // 请求装备洗练(返回)
+{
+    repeated int32 wash_attribute_id = 1;       // 洗练后属性id列表
+}
+
+message Proto10126012       // 请求洗练替换
+{
+    optional int64 unique_id = 1;       // 唯一id
+    optional int32 flag = 2;       // 0放弃，1保存
+}
+
+message Proto50126012       // 请求洗练替换(返回)
+{
+    repeated int32 attribute_id = 1;       // 洗练属性id列表
+    repeated int32 wash_attribute_id = 2;       // 洗练后的id列表
+}
+
+message Proto10126013       // 请求洗练金手指
+{
+    optional int64 unique_id = 1;       // 唯一id
+    optional int32 index = 2;       // 金手指位置
+}
+
+message Proto50126013       // 请求洗练金手指(返回)
+{
+    optional int32 gold_finger = 1;       // 金手指属性
+}
+
+message Proto10126014       // 请求金手指保存
+{
+    optional int64 unique_id = 1;       // 唯一id
+    optional int32 index = 2;       // 金手指位置
+    optional int32 flag = 3;       // 0放弃，1保存
+}
+
+message Proto50126014       // 请求金手指保存(返回)
+{
+    repeated int32 attribute_id = 1;       // 洗练属性id列表
+}
+
+message Proto50126015       // 请求装备制作信息(返回)
+{
+    repeated ProtoKeyValue make_list = 1;       // key:make_id，value:0未制作1已制作
+}
+
+message Proto10126016       // 请求装备制作
+{
+    optional int32 bin_id = 1;       // 库id
+    optional int32 index = 2;       // 序号（随机库不读取）
+}
+
+message Proto50126016       // 请求装备制作(返回)
+{
+    optional int32 flag = 1;       // 0失败，1成功
+}
+
+message Proto10126017       // 请求核心装备升级
+{
+    optional int64 unique_id = 1;       // 
+}
+
+message Proto50126017       // 请求核心装备升级(返回)
+{
+    optional bool flag = 1;       // 
+}
+
+message Proto10126018       // 请求核心装备分解
+{
+    repeated int64 unique_id = 1;       // 
+}
+
+

@@ -1,0 +1,29 @@
+import "ProtoPublic.proto";
+
+message Proto10109001       // 请求排行榜信息
+{
+    optional int32 rank_type = 1;       // 排行类型
+}
+
+message Proto50109001       // 请求排行榜信息(返回)
+{
+    optional int32 rank_type = 1;       // 排行类型
+    repeated ProtoRank rank_list = 2;       // 排行列表
+    optional ProtoRank self_rank = 3;       // 自己的排行信息
+}
+
+message Proto10109002       // 请求排行榜信息（新）
+{
+    optional int32 country = 1;       // 国家 0-全服
+    optional int32 rank_type = 2;       // 类型
+}
+
+message Proto50109002       // 请求排行榜信息（返回 新）
+{
+    repeated ProtoRanker rank_list = 1;       // 
+    optional ProtoRanker self_rank = 2;       // 
+    optional int32 country = 3;       // 
+    optional int32 rank_type = 4;       // 
+}
+
+

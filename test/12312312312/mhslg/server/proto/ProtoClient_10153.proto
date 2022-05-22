@@ -1,0 +1,8 @@
+import "ProtoPublic.proto";
+
+message Proto10153001       // 礼包码兑换
+{
+    optional string code = 1;       // 
+}
+
+

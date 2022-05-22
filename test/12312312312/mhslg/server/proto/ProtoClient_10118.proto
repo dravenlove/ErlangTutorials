@@ -1,0 +1,46 @@
+import "ProtoPublic.proto";
+
+message Proto80118001       // 任务信息（通知）
+{
+    repeated ProtoTask task_info = 1;       // 任务列表
+}
+
+message Proto50118001       // 任务信息（请求）(返回)
+{
+    repeated ProtoTask task_info = 1;       // 任务列表
+}
+
+message Proto10118002       // 提交任务（请求）
+{
+    optional int32 task_id = 1;       // 任务id
+    optional int32 task_type = 2;       // 任务类型
+}
+
+message Proto50118002       // 提交任务（请求）(返回)
+{
+    optional int32 task_id = 1;       // 任务id
+    optional int32 task_type = 2;       // 任务类型
+}
+
+message Proto80118002       // 通知新手引导信息
+{
+    repeated ProtoPairLong guidance_info = 1;       // id:引导id，value:引导完成阶段
+}
+
+message Proto10118003       // 新手引导
+{
+    optional ProtoPairLong guidance_info = 1;       // id:引导id，value:引导完成阶段
+}
+
+message Proto50118005       // 请求赏金任务信息(返回)
+{
+    repeated ProtoBountyMission bounty_mission_list = 1;       // 赏金任务列表
+}
+
+message Proto80118005       // 通知赏金任务信息
+{
+    optional ProtoBountyMission bounty_mission = 1;       // 赏金任务信息
+    optional int32 state = 2;       // 状态0，更新1，删除
+}
+
+

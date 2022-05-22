@@ -1,0 +1,5 @@
+ctrl+r
+
+(\S.*)
+
+<option value="$1" />
