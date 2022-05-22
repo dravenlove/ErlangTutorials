@@ -1,0 +1,56 @@
+import "ProtoPublic.proto";
+
+message Proto10111999       // 测试命令
+{
+    optional string cmd_name = 1;       // 名字
+    optional int64 param1 = 2;       // 参数1
+    optional int64 param2 = 3;       // 参数2
+    optional int64 param3 = 4;       // 参数3
+    optional int64 param4 = 5;       // 参数4
+}
+
+message Proto80111001       // 通知玩家属性更新
+{
+    repeated ProtoProp prop_list = 1;       // 玩家的属性列表
+    optional int64 force = 2;       // 战力。
+}
+
+message Proto10111002       // 请求其他玩家信息
+{
+    optional int64 player_id = 1;       // 玩家id
+}
+
+message Proto50111002       // 请求其他玩家信息(返回)
+{
+    optional ProtoRoleShowInfo show = 1;       // 玩家信息
+}
+
+message Proto80111999       // 调试输出
+{
+    optional string str = 1;       // 字符串数据
+}
+
+message Proto50111003       // 角色改名（返回）
+{
+    optional string name = 1;       // 
+    optional int32 value = 2;       // 0-成功 1-失败
+    optional int32 cool_time = 3;       // 失败时 冷却时间
+}
+
+message Proto10111003       // 角色改名（请求）
+{
+    optional string name = 1;       // 
+}
+
+message Proto10111004       // 请求玩家英雄信息
+{
+    optional int64 player_id = 1;       // 
+    optional int32 hero_id = 2;       // 
+}
+
+message Proto50111004       // 请求玩家英雄信息(返回)
+{
+    optional ProtoHeroBase hero_base = 1;       // 
+}
+
+

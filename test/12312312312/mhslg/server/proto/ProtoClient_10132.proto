@@ -1,0 +1,35 @@
+import "ProtoPublic.proto";
+
+message Proto10132001       // 请求爵位信息
+{
+    optional int32 nobility_id = 1;       // 爵位id11
+}
+
+message Proto50132001       // 请求爵位信息(返回)
+{
+    repeated int32 privilege = 1;       // 特权
+    repeated int32 condition = 2;       // 条件
+    optional int32 schedule = 3;       // 进度百分比
+}
+
+message Proto80132001       // 通知爵位信息
+{
+    optional int32 notice = 1;       // 通知提示
+}
+
+message Proto10132002       // 请求特权激活
+{
+    optional int32 id = 1;       // 特权id
+}
+
+message Proto50132003       // 请求爵位提升(返回)
+{
+    optional int32 nobility_id = 1;       // 爵位id
+}
+
+message Proto80132002       // 通知特权激活
+{
+    repeated int32 privilege_id_list = 1;       // 已经激活的特权列表
+}
+
+

@@ -1,0 +1,22 @@
+import "ProtoPublic.proto";
+
+message Proto50115001       // 请求在线奖励界面信息(返回)
+{
+    optional int32 gift_id = 1;       // 礼包id
+    optional int32 surplus_time = 2;       // 剩余时间
+    optional int32 is_double = 3;       // 是否双倍 1:是双倍 0:不是双倍
+    optional int32 is_get_all = 4;       // 是否领取了所有礼包
+}
+
+message Proto10115002       // 请求在线奖励礼包领取
+{
+    optional int32 gift_id = 1;       // 礼包id
+}
+
+message Proto80115003       // 通知在线奖励图标
+{
+    optional int32 type = 1;       // 图标开启状态(1为开启 2为关闭)
+    optional int32 is_get_all = 2;       // 是否领取了所有礼包
+}
+
+

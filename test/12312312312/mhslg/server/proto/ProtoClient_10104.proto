@@ -1,0 +1,43 @@
+import "ProtoPublic.proto";
+
+message Proto80104001       // 新邮件通知
+{
+    repeated int64 mail_id_list = 1;       // 新邮件id列表
+}
+
+message Proto50104002       // 获取玩家邮件列表(返回)
+{
+    repeated ProtoMail mail_list = 1;       // 邮件列表
+}
+
+message Proto10104003       // 获取单个邮件详细信息
+{
+    optional int64 mail_id = 1;       // 邮件id
+}
+
+message Proto50104003       // 获取单个邮件详细信息(返回)
+{
+    optional ProtoMail mail_info = 1;       // 邮件详细信息
+}
+
+message Proto10104004       // 提取邮件附件
+{
+    optional int64 mail_id = 1;       // 要提取的邮件ID，为0则提取所有邮件附件
+}
+
+message Proto50104004       // 提取邮件附件(返回)
+{
+    repeated ProtoMail mail_list = 1;       // 提取附件后的邮件信息
+}
+
+message Proto10104005       // 删除邮件
+{
+    repeated int64 mail_id_list = 1;       // 要删除的邮件ID列表
+}
+
+message Proto50104005       // 删除邮件(返回)
+{
+    repeated int64 mail_id_list = 1;       // 要删除的邮件ID列表
+}
+
+

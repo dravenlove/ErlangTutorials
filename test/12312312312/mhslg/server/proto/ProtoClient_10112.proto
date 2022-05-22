@@ -1,0 +1,9 @@
+import "ProtoPublic.proto";
+
+message Proto50112001       // 请求vip界面信息(返回)
+{
+    optional int32 vip_level = 1;       // vip等级
+    optional double recharge_money = 2;       // 已充值金额
+}
+
+

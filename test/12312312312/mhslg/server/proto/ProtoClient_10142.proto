@@ -1,0 +1,27 @@
+import "ProtoPublic.proto";
+
+message Proto50142002       // 查看战功奖励排行榜(返回)
+{
+    repeated ProtoRank rank_info = 1;       // 排行信息
+}
+
+message Proto50142001       // 请求战功奖励界面(返回)
+{
+    repeated ProtoKeyValue award_info = 1;       // 奖励信息
+    optional int32 stage = 2;       // 阶段
+    optional int32 meritorious = 3;       // 战功
+    optional int32 circulation_award = 4;       // 未领取的循环奖励
+    optional int32 get_circulation_award = 5;       // 已领取的循环奖励
+}
+
+message Proto10142003       // 请求领取战功奖励
+{
+    optional int32 grade = 1;       // 档次
+}
+
+message Proto80142005       // 更新战功奖励个人战功
+{
+    optional int32 meritorious = 1;       // 战功
+}
+
+

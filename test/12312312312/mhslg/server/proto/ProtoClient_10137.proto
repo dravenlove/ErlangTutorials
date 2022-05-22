@@ -1,0 +1,90 @@
+import "ProtoPublic.proto";
+
+message Proto10137001       // 请求巅峰竞技信息
+{
+    optional int32 other = 1;       // 预留
+}
+
+message Proto50137001       // 请求巅峰竞技信息(返回)
+{
+    repeated ProtoArenaPlayer country_top = 1;       // 国家排名第一玩家列表
+    repeated ProtoArenaPlayer challenge_list = 2;       // 可挑战的玩家列表
+    optional int32 self_rank = 3;       // 自己的排名
+    optional int32 buy_times = 4;       // 已购买次数
+    optional int32 used_times = 5;       // 已使用次数
+    optional ProtoArenaPlayer self = 6;       // 自己的信息
+}
+
+message Proto10137002       // 请求巅峰竞技挑战
+{
+    optional int32 type = 1;       // 1:挑战 2:扫荡
+    repeated int32 hero_list = 2;       // 英雄列表
+    optional int32 index = 3;       // 索引
+    optional int64 tag_id = 4;       // 目标ID
+    optional int32 tag_rank = 5;       // 目标排名
+}
+
+message Proto50137002       // 请求巅峰竞技挑战(返回)
+{
+    optional int32 type = 1;       // 1:挑战 2:扫荡
+    repeated int32 hero_list = 2;       // 英雄列表
+    optional int32 index = 3;       // 索引
+    optional int64 tag_id = 4;       // 目标ID
+    optional int32 tag_rank = 5;       // 目标排名
+}
+
+message Proto10137003       // 请求巅峰竞技购买次数
+{
+    optional int32 other = 1;       // 预留
+}
+
+message Proto50137003       // 请求巅峰竞技购买次数(返回)
+{
+    optional int32 buy_times = 1;       // 已购买次数
+}
+
+message Proto10137004       // 请求巅峰竞技刷新对手
+{
+    optional int32 other = 1;       // 预留
+}
+
+message Proto50137004       // 请求巅峰竞技刷新对手(返回)
+{
+    repeated ProtoArenaPlayer player_list = 1;       // 刷新到的玩家列表
+}
+
+message Proto10137005       // 请求巅峰竞技挑战记录
+{
+    optional int32 other = 1;       // 预留
+}
+
+message Proto50137005       // 请求巅峰竞技挑战记录(返回)
+{
+    repeated ProtoArenaRecord record_list = 1;       // 记录列表
+}
+
+message Proto10137006       // 请求巅峰竞技排行榜
+{
+    optional int32 page = 1;       // 第几页
+}
+
+message Proto50137006       // 请求巅峰竞技排行榜(返回)
+{
+    optional int32 page = 1;       // 第几页
+    optional int32 max_page = 2;       // 最大页数
+    repeated ProtoArenaPlayer rank_list = 3;       // 排行列表
+    optional int32 self_rank = 4;       // 自己的排名
+}
+
+message Proto10137007       // 请求巅峰竞技使用次数
+{
+    optional int32 other = 1;       // 预留
+}
+
+message Proto50137007       // 请求巅峰竞技使用次数(返回)
+{
+    optional int32 buy_times = 1;       // 已购买次数
+    optional int32 used_times = 2;       // 已使用次数
+}
+
+

@@ -1,0 +1,42 @@
+import "ProtoPublic.proto";
+
+message Proto50155001       // 请求部队信息(返回)
+{
+    repeated ProtoTroop troop_list = 1;       // 部
+}
+
+message Proto80155001       // 通知部队信息
+{
+    repeated ProtoTroop troop_list = 1;       // 
+    optional int32 flag = 2;       // 0更新1删除
+}
+
+message Proto10155002       // 请求创建部队
+{
+    optional int32 hero_id = 1;       // 
+}
+
+message Proto10155003       // 请求部队行军
+{
+    optional int32 hero_id = 1;       // 
+    repeated ProtoPos pos_list = 2;       // 路线列表
+    optional int32 act = 3;       // 行为:1进城
+}
+
+message Proto10155004       // 请求部队解散
+{
+    optional int32 hero_id = 1;       // 
+}
+
+message Proto80155101       // 通知部队战斗信息
+{
+    repeated ProtoFieldFightEffect troop_fight = 1;       // 
+    optional int32 skill_id = 2;       // 
+}
+
+message Proto50155101       // 请求部队战斗信息(返回)
+{
+    repeated ProtoTroopFight troop_fight_list = 1;       // 
+}
+
+

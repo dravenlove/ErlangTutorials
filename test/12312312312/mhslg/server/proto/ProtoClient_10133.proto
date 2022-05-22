@@ -1,0 +1,30 @@
+import "ProtoPublic.proto";
+
+message Proto10133001       // 请求城池建设信息
+{
+    optional int32 city_id = 1;       // 城池id
+}
+
+message Proto50133001       // 请求城池建设信息(返回)
+{
+    repeated ProtoCityBuilding building = 1;       // 城池建筑信息
+    optional int32 add1 = 2;       // 建设值加成百分比
+    optional int32 add2 = 3;       // 功勋加成百分比
+}
+
+message Proto10133003       // 请求英雄建设
+{
+    optional int32 hero_id = 1;       // 英雄id
+    optional int32 city_id = 2;       // 城池id
+    optional int32 building_id = 3;       // 建筑id
+    optional int32 choose = 4;       // 选择建设规格
+    optional int32 type = 5;       // 类型0等待，1元宝
+}
+
+message Proto50133003       // 请求英雄建设(返回)
+{
+    optional int32 building_id = 1;       // 建设id
+    optional int32 value = 2;       // 增加的建设度
+}
+
+

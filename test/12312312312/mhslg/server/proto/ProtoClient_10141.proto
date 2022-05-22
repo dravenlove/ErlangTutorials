@@ -1,0 +1,20 @@
+import "ProtoPublic.proto";
+
+message Proto10141001       // 请求英雄拜访
+{
+    optional int32 city_id = 1;       // 城池id
+    optional int32 hero_id = 2;       // 英雄id
+    optional int32 type = 3;       // 类型0时间，1元宝
+}
+
+message Proto50141002       // 请求城池拜访信息(返回)
+{
+    repeated ProtoCityVisiting city_visiting = 1;       // 拜访信息
+}
+
+message Proto80141002       // 通知城池拜访信息
+{
+    optional ProtoCityVisiting city_visiting = 1;       // 拜访信息
+}
+
+

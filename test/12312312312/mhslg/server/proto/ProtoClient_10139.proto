@@ -1,0 +1,79 @@
+import "ProtoPublic.proto";
+
+message Proto10139001       // 请求任务列表
+{
+    optional int32 type = 1;       // 任务类型
+}
+
+message Proto50139001       // 请求任务列表(返回)
+{
+    repeated ProtoTaskInfo task_list = 1;       // 任务列表
+    optional int32 type = 2;       // 任务类型
+    optional ProtoGovernmentDetail government = 3;       // 政务任务信息
+}
+
+message Proto80139001       // 通知任务更新
+{
+    optional ProtoTaskInfo task = 1;       // 任务
+    optional int32 cmd = 2;       // 1:增加 2：删除 3：更新
+}
+
+message Proto10139002       // 请求提交任务/领取任务奖励
+{
+    optional int32 task_id = 1;       // 任务id
+}
+
+message Proto10139003       // 请求国家任务主界面信息
+{
+    optional int32 main_type = 1;       // 任务主类型
+}
+
+message Proto50139003       // 国家任务(返回)
+{
+    optional ProtoCountryTask task = 1;       // 任务信息
+    optional int32 main_type = 2;       // 主类别
+}
+
+message Proto10139004       // 国家任务领取
+{
+    optional int64 main_type = 1;       // 主类型
+    optional int64 task_id = 2;       // 任务id
+}
+
+message Proto50139004       // 国家任务领取(返回)
+{
+    optional ProtoCountryTask task = 1;       // 任务信息
+}
+
+message Proto10139006       // 请求接受任务
+{
+    optional int32 task_id = 1;       // 任务id
+}
+
+message Proto10139007       // 请求放弃任务
+{
+    optional int32 task_id = 1;       // 任务id
+}
+
+message Proto10139008       // 购买任务次数
+{
+    optional int32 type = 1;       // 任务类型
+}
+
+message Proto10139009       // 请求捐赠
+{
+    optional int32 task_id = 1;       // 任务id
+    optional int32 amount = 2;       // 捐赠数量
+}
+
+message Proto10139010       // 请求刷新政务任务
+{
+    optional int32 is_free = 1;       // 是否免费刷新,0否1是
+}
+
+message Proto10139011       // 请求提升任务评价
+{
+    optional int32 task_id = 1;       // 任务id
+}
+
+

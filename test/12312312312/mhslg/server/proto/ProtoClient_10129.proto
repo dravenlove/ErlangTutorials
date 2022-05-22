@@ -1,0 +1,19 @@
+import "ProtoPublic.proto";
+
+message Proto10129001       // 穿戴称号（请求）
+{
+    optional int64 unique_id = 1;       // 称号背包唯一id
+    optional int32 hero_id = 2;       // 
+}
+
+message Proto10129002       // 脱下称号（请求）
+{
+    optional int32 hero_id = 1;       // 英雄id
+}
+
+message Proto80129003       // 过期称号（通知）
+{
+    repeated ProtoItem overdue_list = 1;       // 过期列表
+}
+
+
